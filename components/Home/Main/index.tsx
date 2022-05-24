@@ -1,5 +1,6 @@
 import { Box, Flex, Image, Text, useTheme } from '@chakra-ui/react';
 import React from 'react';
+import FooterBanner from '../FooterBanner';
 import { MainIcon, MainImage, MainText, MainTitle, MainWarning } from './MainComponents';
 
 const Main: React.FC = () => {
@@ -7,7 +8,7 @@ const Main: React.FC = () => {
   return (
     <div>
       <Image src="https://i.imgur.com/O2AFbK7.png" alt="" />
-      <Flex bgColor={theme.styles.colors.primary} height="100vh" p={20} align={'flex-start'} direction='row'>
+      <Flex bgColor={theme.styles.colors.primary} p={10} align={'flex-start'} direction='row'>
         <Flex direction="column">
           <MainTitle>Como funciona?</MainTitle>
           <MainText>
@@ -25,6 +26,9 @@ const Main: React.FC = () => {
           <MainText>
             º Lojas
           </MainText>
+          <MainText>
+            Com um sistema de feedback para ambos os lados em acordos, como para quem pediu o serviço e quem o executou.
+          </MainText>
           <Flex direction="row" mt='2em' align="center">
             <MainIcon image="https://i.imgur.com/ff0VVlX.png" />
             <MainWarning>
@@ -35,6 +39,7 @@ const Main: React.FC = () => {
         <MainImage image="https://i.imgur.com/qhGrRcl.png" />
       </Flex>
       <Image src="https://i.imgur.com/TvZOLbg.png" alt="" />
+      <FooterBanner />
     </div>
   );
 }

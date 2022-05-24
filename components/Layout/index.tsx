@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container } from '@chakra-ui/react';
 import Head from 'next/head';
-import Footer from '../Footer';
-import Navbar from '../Navbar';
+import Footer from './Footer';
+import Navbar from './Navbar';
 
 type Props = {
   children?: React.ReactNode

@@ -14,9 +14,9 @@ export const MainTitle: React.FC<PropsTitle> = ({ children }) => {
   return (
     <Text
       mt='3em'
-      fontSize={'32px'}
+      fontSize={[16, 32]}
       fontWeight={'700'}
-      textAlign={'justify'}
+      textAlign={['center', 'justify']}
       color={theme.styles.colors.secondary}
     >
       {children}
@@ -28,9 +28,9 @@ export const MainText: React.FC<PropsTitle> = ({ children }) => {
   const theme = useTheme()
   return (
     <Text
-      fontSize={'16px'}
+      fontSize={[10, 16]}
       fontWeight={'400'}
-      textAlign={'justify'}
+      textAlign={['center', 'justify']}
       color={theme.styles.colors.secondary}
       mt='2em'
     >
@@ -43,9 +43,9 @@ export const MainWarning: React.FC<PropsTitle> = ({ children }) => {
   const theme = useTheme()
   return (
     <Text
-      fontSize={'15px'}
+      fontSize={[10, 15]}
       fontWeight={'400'}
-      textAlign={'justify'}
+      textAlign={['center', 'justify']}
       color={theme.styles.colors.warning}
     >
       {children}
@@ -56,10 +56,9 @@ export const MainWarning: React.FC<PropsTitle> = ({ children }) => {
 export const MainIcon: React.FC<PropsImage> = ({ image }) => {
   return (
     <Image
-      width={'26px'}
-      height={'26px'}
+      width={['14px', '26px']}
       src={image}
-      mr='1em'
+      mr={['0.3em', '1em']}
     />
 
   );
@@ -68,11 +67,10 @@ export const MainIcon: React.FC<PropsImage> = ({ image }) => {
 export const MainImage: React.FC<PropsImage> = ({ image }) => {
   return (
     <Image
-      width={'462px'}
-      height={'404px'}
+      width={['0', '462px']}
+      height={['0', '404px']}
       src={image}
-      mt='20em'
+      mt={['0', '20em']}
     />
-
   );
 }

@@ -1,4 +1,3 @@
-import { Container } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import { HeroBanner, Main } from '../components'
 
