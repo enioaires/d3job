@@ -24,13 +24,12 @@ const PreSignUp: React.FC = () => {
         </Flex>
         <Flex direction='column' align='center'>
           <PreSignUpText>Quer apenas contratar um serviço selecione <b>USUÁRIOS</b></PreSignUpText>
-          <PreSignUpBox>
+          <PreSignUpBox usuario>
             <PreSignUpBoxText>USUÁRIOS</PreSignUpBoxText>
             <PreSignUpIcon third image="https://i.imgur.com/dHGFm7L.png" />
           </PreSignUpBox>
         </Flex>
       </Flex>
-      <Image src="https://i.imgur.com/L5sbHLd.png" alt="" />
     </>
   );
 }

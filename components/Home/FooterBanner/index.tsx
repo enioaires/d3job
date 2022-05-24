@@ -5,7 +5,7 @@ import { FooterImage, FooterSocialLogos } from './FooterBannerComponents';
 
 const FooterBanner: React.FC = () => {
   return (
-    <Flex align='center' justify={['space-between', 'space-between']} mb='1em'>
+    <Flex align='center' justify={['space-between', 'space-between']} direction={['row-reverse', 'row']} mb='1em'>
       <FooterImage image="https://i.imgur.com/RXOqwLf.png" />
       <Flex direction="column">
         <FooterSocialLogos instagram />

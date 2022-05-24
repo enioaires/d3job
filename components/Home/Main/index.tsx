@@ -7,7 +7,7 @@ const Main: React.FC = () => {
   const theme = useTheme()
   return (
     <div>
-      <Image src="https://i.imgur.com/O2AFbK7.png" alt="" />
+      <Image src="https://i.imgur.com/O2AFbK7.png" mb='-0.1em' />
       <Flex bgColor={theme.styles.colors.primary} p={10} align={'flex-start'} direction='row'>
         <Flex direction="column">
           <MainTitle>Como funciona?</MainTitle>
@@ -38,7 +38,7 @@ const Main: React.FC = () => {
         </Flex>
         <MainImage image="https://i.imgur.com/qhGrRcl.png" />
       </Flex>
-      <Image src="https://i.imgur.com/TvZOLbg.png" alt="" />
+      <Image src="https://i.imgur.com/TvZOLbg.png" mt='-0.1em' />
       <FooterBanner />
     </div>
   );

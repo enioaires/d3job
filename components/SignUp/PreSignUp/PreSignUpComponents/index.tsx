@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, useTheme, Image } from '@chakra-ui/react'
+import { Box, Text, useTheme, Image, Link } from '@chakra-ui/react'
 
 interface PropsTitle {
   children: React.ReactNode
@@ -10,6 +10,9 @@ interface PropsText {
 interface PropsBox {
   children: React.ReactNode
   middle?: boolean
+  servicos?: boolean
+  lojas?: boolean
+  usuario?: boolean
 }
 
 interface PropsIcon {
@@ -44,24 +47,46 @@ export const PreSignUpText: React.FC<PropsText> = ({ children }) => {
   );
 }
 
-export const PreSignUpBox: React.FC<PropsBox> = ({ children, middle }) => {
+export const PreSignUpBox: React.FC<PropsBox> = ({ children, middle, usuario, lojas, servicos }) => {
   const theme = useTheme()
   return (
-    <Box
-      display='flex'
-      width={['103px', '275px']}
-      height={['58px', '180px']}
-      bgColor={theme.styles.colors.primary}
-      borderRadius='16px'
-      ml={middle ? '0.5em' : '0px'}
-      mr={middle ? '0.5em' : '0px'}
-      alignItems='center'
-      justifyContent='center'
-      flexDirection={'column'}
-      cursor='pointer'
-    >
-      {children}
-    </Box>
+    <>
+      {usuario ? (
+        <Link href='/signUpUser'>
+          <Box
+            display='flex'
+            width={['103px', '275px']}
+            height={['58px', '180px']}
+            bgColor={theme.styles.colors.primary}
+            borderRadius='16px'
+            ml={middle ? '0.5em' : '0px'}
+            mr={middle ? '0.5em' : '0px'}
+            alignItems='center'
+            justifyContent='center'
+            flexDirection={'column'}
+            cursor='pointer'
+          >
+            {children}
+          </Box>
+        </Link>
+      ) : (
+        <Box
+          display='flex'
+          width={['103px', '275px']}
+          height={['58px', '180px']}
+          bgColor={theme.styles.colors.primary}
+          borderRadius='16px'
+          ml={middle ? '0.5em' : '0px'}
+          mr={middle ? '0.5em' : '0px'}
+          alignItems='center'
+          justifyContent='center'
+          flexDirection={'column'}
+          cursor='pointer'
+        >
+          {children}
+        </Box>
+      )}
+    </>
   );
 }
 

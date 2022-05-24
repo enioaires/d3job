@@ -44,6 +44,25 @@ export const NavbarLogin: React.FC<PropsText> = ({ children }) => {
   );
 }
 
+export const NavbarVoltar: React.FC<PropsText> = ({ children }) => {
+  return (
+    <>
+      <Link href='/preSignUp'>
+        <Text
+          cursor='pointer'
+          fontWeight={'700'}
+          fontSize={['12px', '32px']}
+          lineHeight={['14.5px', '39px']}
+          textAlign='center'
+          mr='1.5em'
+        >
+          {children}
+        </Text>
+      </Link>
+    </>
+  );
+}
+
 export const NavbarButton: React.FC<PropsButton> = ({ children, registro }) => {
   const theme = useTheme()
   return (
