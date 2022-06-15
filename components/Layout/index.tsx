@@ -10,7 +10,7 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <Container maxW='container.xl'>
+    <Container maxW={['400px', '1440px', '1980px']}>
       <Head>
         <title>D3Job</title>
       </Head>

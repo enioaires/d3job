@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Button, Flex, FormLabel, useTheme } from '@chakra-ui/react';
+import { Button, Flex, FormErrorMessage, FormLabel, useTheme, Text } from '@chakra-ui/react';
 import { serviceGetAllClients, servicePostClient } from '../../../service'
 import { ISignup } from '../../../types';
 import { SignUpUserFormInput, SignUpUserFormTitle } from './SignUpUserFormComponents';
 import InputMask from "react-input-mask";
+import moment from 'moment';
+import Message from '../../Message';
+
 
 const validationSchema = yup.object({
   nameComplet: yup
     .string()
-    .min(2, 'Nome muito curto')
-    .required('Obrigatório'),
+    .min(3, 'Nome muito curto')
+    .required('Este campo é obrigatório.'),
   nameUser: yup
     .string()
-    .min(2, 'Nome muito curto')
-    .required('Obrigatório'),
-  email: yup.string().email("Email inválido").required('Obrigatório').matches(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i),
-  phones: yup.string().required('Obrigatório'),
-  dateBirth: yup.date().required('Obrigatório'),
-  password: yup.string().required('Obrigatório'),
-  confirmPassword: yup.string().required('Obrigatório'),
+    .min(3, 'Nome muito curto')
+    .required('Este campo é obrigatório.'),
+  email: yup.string().email("Email inválido").required('Este campo é obrigatório.').matches(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i),
+  phones: yup.string().required('Este campo é obrigatório.'),
+  dateBirth: yup.date().required('Este campo é obrigatório.'),
+  password: yup.string().required('Este campo é obrigatório.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
+  confirmPassword: yup.string().required('Este campo é obrigatório.').matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
 })
 
 const SignUpUserForm: React.FC = () => {
@@ -34,13 +37,14 @@ const SignUpUserForm: React.FC = () => {
       nameUser: '',
       nameComplet: '',
       phones: '',
-      dateBirth: new Date(),
+      dateBirth: moment(new Date()).toDate(),
       password: '',
       confirmPassword: ''
     },
     validationSchema: validationSchema,
     onSubmit: async () => {
-      await servicePostClient(payload)
+      // await servicePostClient(payload)
+      console.log(formikUserData.values)
     },
   });
 
@@ -66,10 +70,10 @@ const SignUpUserForm: React.FC = () => {
   }, [formikUserData.values])
 
   return (
-    <Flex align="center" justify="center" direction="column" mt='1em'>
+    <Flex align="center" justify="center" direction="column" mt='1.3em'>
       <SignUpUserFormTitle>USUÁRIO</SignUpUserFormTitle>
       <form onSubmit={formikUserData.handleSubmit}>
-        <Flex justify='space-between'>
+        <Flex justify='space-between' mt={'100px'}>
           <Flex direction="column" mr='2em'>
             <FormLabel>Nome</FormLabel>
             <SignUpUserFormInput
@@ -80,6 +84,7 @@ const SignUpUserForm: React.FC = () => {
               value={formikUserData.values.nameComplet}
               left
             />
+            {formikUserData.errors.nameComplet && <Message>{formikUserData.errors.nameComplet}</Message>}
             <FormLabel>Nome de usuário</FormLabel>
             <SignUpUserFormInput
               id='nameUser'
@@ -89,6 +94,7 @@ const SignUpUserForm: React.FC = () => {
               value={formikUserData.values.nameUser}
               left
             />
+            {formikUserData.errors.nameUser && <Message>{formikUserData.errors.nameUser}</Message>}
             <FormLabel>E-mail</FormLabel>
             <SignUpUserFormInput
               id='email'
@@ -98,6 +104,7 @@ const SignUpUserForm: React.FC = () => {
               value={formikUserData.values.email}
               left
             />
+            {formikUserData.errors.email && <Message>{formikUserData.errors.email}</Message>}
             <FormLabel>Contato</FormLabel>
             <SignUpUserFormInput
               id='phones'
@@ -109,6 +116,7 @@ const SignUpUserForm: React.FC = () => {
               mask="(99) 99999-9999"
               maskChar={null}
             />
+            {formikUserData.errors.phones && <Message>{formikUserData.errors.phones}</Message>}
           </Flex>
 
           <Flex direction="column">
@@ -118,8 +126,9 @@ const SignUpUserForm: React.FC = () => {
               name="dateBirth"
               color={formikUserData.errors.dateBirth ? theme.styles.colors.red : theme.styles.colors.green}
               onChange={formikUserData.handleChange}
-              value={''}
+              value={moment(formikUserData.values.dateBirth).format('DD/MM/YYYY')}
             />
+            {/* {formikUserData.errors.dateBirth && <Message>{formikUserData.errors.dateBirth}</Message>} */}
             <FormLabel>Senha</FormLabel>
             <SignUpUserFormInput
               id='password'
@@ -129,6 +138,7 @@ const SignUpUserForm: React.FC = () => {
               onChange={formikUserData.handleChange}
               value={formikUserData.values.password}
             />
+            {formikUserData.errors.password && <Message>{formikUserData.errors.password}</Message>}
             <FormLabel>Confirmar senha</FormLabel>
             <SignUpUserFormInput
               id='confirmPassword'
@@ -138,6 +148,7 @@ const SignUpUserForm: React.FC = () => {
               onChange={formikUserData.handleChange}
               value={formikUserData.values.confirmPassword}
             />
+            {formikUserData.errors.confirmPassword && <Message>{formikUserData.errors.confirmPassword}</Message>}
             <Button
               type='submit'
               bg={theme.styles.colors.primary}

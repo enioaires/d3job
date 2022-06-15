@@ -13,8 +13,8 @@ const Footer: React.FC = () => {
         </Flex>
       )}
       {(router.pathname === '/preSignUp' || router.pathname === '/signUpUser') && (
-        <Flex justify='flex-end' >
-          <Image src="https://i.imgur.com/L5sbHLd.png" alt="" />
+        <Flex justify='flex-end'>
+          <Image src="https://i.imgur.com/L5sbHLd.png" mt={'145px'} alt="" />
         </Flex>
       )}
     </>

@@ -46,7 +46,7 @@ export const MainWarning: React.FC<PropsTitle> = ({ children }) => {
       fontSize={[10, 15]}
       fontWeight={'400'}
       textAlign={['center', 'justify']}
-      color={theme.styles.colors.warning}
+      color={theme.styles.colors.error}
     >
       {children}
     </Text>
